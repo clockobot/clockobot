@@ -19,7 +19,7 @@ More information about this project here [www.clockobot.com](https://clockobot.c
 
 ## Installation
 
-Clockobot is built on top of Laravel, using the TALL stack. In order to install it, make sure you follow the following steps. If you struggle, make sure you refer to the extensive [Laravel documentation](https://laravel.com/docs) before submitting a new issue.  
+Clockobot is built on top of Laravel using the TALL stack. To install it, ensure that you follow the steps below. If you encounter any difficulties, please refer to the extensive Laravel documentation before submitting a new issue.  
 
 ### Project requirements
 - PHP 8.2.0 Required: latest Laravel requires PHP 8.2.0 or greater.
