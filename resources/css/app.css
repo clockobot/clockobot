@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* For the dark: applied classes to work fine with trigger */
+@layer components {
+
+    .page-layout {
+        @apply py-8 text-day-7 dark:text-night-1;
+    }
+
+    .page-wrapper {
+        @apply w-full mx-auto px-4 md:px-8;
+    }
+
+    .toggle-checkbox {
+        @apply border-day-4 dark:border-night-3;
+    }
+    .toggle-checkbox:checked {
+        @apply right-0 border-emerald-600;
+        right: 0;
+    }
+    .toggle-checkbox + .toggle-label {
+        @apply bg-day-4 dark:bg-night-4;
+    }
+    .toggle-checkbox:checked + .toggle-label {
+        @apply bg-app-contrast;
+    }
+
+    .nav-el {
+        @apply text-day-7 dark:text-night-1 hover:bg-day-3 dark:hover:bg-night-6 flex gap-x-3 rounded-md p-2 text-sm leading-6 font-semibold;
+    }
+
+    .nav-el.active {
+        @apply bg-day-3 dark:bg-night-6;
+    }
+
+    /* File input styles */
+    .file_input {
+        @apply w-[0.1px] h-[0.1px] opacity-0 overflow-hidden absolute z-[-1];
+    }
+
+    .file_input + label {
+        /* Same as primary button */
+        @apply cursor-pointer flex items-center px-4 py-2 rounded shadow-sm text-sm font-medium text-white bg-app hover:bg-app-contrast transition-colors focus:outline-none focus:ring-0;
+    }
+}
+
+/* Other utils */
+
+strong {
+    @apply font-medium;
+}
+
+[type='checkbox']:focus, [type='radio']:focus {
+    outline: 2px solid transparent;
+    outline-offset: 0;
+    --tw-ring-offset-width: 0;
+    --tw-ring-offset-color: transparent;
+    --tw-ring-color: transparent;
+    --tw-ring-offset-shadow: none;
+    --tw-ring-shadow: none;
+    box-shadow: none;
+}
+
+[type='checkbox'] {
+    @apply text-app;
+}
+
+[type='checkbox']:checked,
+[type='checkbox']:checked:hover {
+    @apply bg-app;
+}
+
+#nprogress .bar {
+    @apply bg-app !important;
+}
+
+/* Loader */
+.loader {
+    width: 100%;
+    height: 100%;
+    border: 3px solid #FFF;
+    border-radius: 50%;
+    display: inline-block;
+    position: relative;
+    box-sizing: border-box;
+    animation: rotation 1s linear infinite;
+}
+.loader::after {
+    content: '';
+    box-sizing: border-box;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 3px solid;
+    border-color: #4FC1B5 transparent;
+}
+
+@keyframes rotation {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}

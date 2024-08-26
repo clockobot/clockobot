@@ -1,0 +1,132 @@
+<?php
+
+return [
+    // Nav
+    'theme_light' => 'Interface claire',
+    'theme_dark' => 'Interface sombre',
+    'dashboard' => 'Dashboard',
+    'work_types' => 'Types de travaux',
+    'clients' => 'Clients',
+    'projects' => 'Projets',
+    'time_entries' => 'Entrées du timer',
+    'reporting' => 'Rapports',
+    'settings' => 'Profil',
+    'users' => 'Utilisateurs',
+    'logout' => 'Se déconnecter',
+    'show' => 'Afficher',
+    'hide' => 'Cacher',
+
+    // Interface
+    'add' => 'Ajouter',
+    'edit' => 'Éditer',
+    'cancel' => 'Annuler',
+    'save' => 'Sauvegarder',
+    'stop' => 'Stopper',
+    'delete' => 'Supprimer',
+    'export' => 'Exporter',
+    'reset' => 'Réinitialiser',
+    'modify' => 'Modifier',
+    'upload' => 'Téléverser',
+    'total' => 'Total',
+    'hours' => 'heure(s)',
+    'start' => 'Début',
+    'end' => 'Fin',
+    'date_start' => 'Date de début',
+    'hour_start' => 'Heure de début',
+    'date_end' => 'Date de fin',
+    'hour_end' => 'Heure de fin',
+    'confirm_delete' => 'Êtes-vous certain-e de vouloir supprimer',
+    'choose' => 'Choisir',
+    'title' => 'Titre',
+    'name' => 'Nom',
+    'contact' => 'Contact',
+    'email' => 'Email',
+    'phone' => 'Téléphone',
+    'user' => 'Utilisateur',
+    'username' => "Nom d'utilisateur",
+    'project' => 'Projet',
+    'client' => 'Client',
+    'work_type' => 'Tâche',
+    'duration' => 'Durée',
+    'billable' => 'Facturable',
+    'description' => 'Description',
+    'status' => 'Statut',
+    'deadline' => 'Deadline',
+    'non_estimated' => 'Non estimé',
+    'time_estimate' => 'Temps estimé',
+    'time_engaged' => 'Temps engagé',
+    'no_description' => 'Pas de description',
+    'ticket_link' => 'Lien / Ticket',
+    'link' => 'Lien',
+    'no_entry' => 'Aucune entrée correspondante.',
+    'language' => "Langue de l'interface",
+    'french' => 'Français',
+    'english' => 'Anglais',
+    'german' => 'Allemand',
+    'spanish' => 'Espagnol',
+
+    // Dashboard
+    'last_30_days' => '30 derniers jours',
+    'this_week' => 'Cette semaine',
+    'today' => "Aujourd'hui",
+    'quick_links' => 'Time now',
+    'nothing_to_show' => 'Rien à afficher pour le moment.',
+    'recent_activities' => 'Activités récentes',
+    'recent_activities_see_all' => 'Voir toutes les entrées',
+    'team_statistics' => '15 derniers jours',
+
+    // Clients
+    'client_name' => 'Nom du client',
+    'contact_name' => 'Nom du contact',
+    'contact_email' => 'Email du contact',
+    'contact_phone' => 'Tél. du contact',
+    'client_list' => 'Liste des clients',
+    'client_list_intro' => 'Gérez votre annuaire de clients',
+    'search_client' => 'Rechercher un client',
+    'add_client' => 'Ajouter un client',
+    'delete_client' => 'Supprimer un client',
+    'delete_client_warning' => 'Supprimer un client supprimera tous les projets et toutes les entrées enregistrées et associées à ce dernier.',
+
+    // Projects
+    'project_title' => 'Titre du projet',
+    'projects_intro' => 'Gérez les projets de vos clients.',
+    'search_project' => 'Rechercher un projet',
+    'add_project' => 'Ajouter un projet',
+    'delete_project' => 'Supprimer un projet',
+    'delete_project_warning' => 'Supprimer un projet supprimera toutes les entrées enregistrées et associées à ce dernier.',
+    'see_projects_details' => 'Le projet en détail',
+
+    // Work types
+    'work_type_title' => 'Titre de la tâche',
+    'work_types_intro' => 'Gérez les différentes tâches relatives à vos projet en général.',
+    'search_work_type' => 'Rechercher une tâche',
+    'delete_work_type' => 'Supprimer un type de tâche',
+    'delete_work_type_warning' => 'Supprimer un type de tâche supprimera toutes les entrées enregistrées et associées à ce dernier.',
+
+    // Time entries
+    'time_entries_intro' => 'Retrouvez toutes les entrées de votre agenda',
+    'add_time_entries' => 'Ajouter une entrée',
+    'delete_time_entries' => 'Supprimer une entrée',
+    'delete_time_entries_warning' => 'Êtes-vous certain-e de vouloir supprimer cette entrée ?',
+
+    // Exports
+    'billed_hours' => 'Heures facturées',
+    'non_billed_hours' => 'Heures non facturées',
+    'duration_hours' => 'Durée (heures)',
+    'duration_decimal' => 'Durée (décimale)',
+
+    // Users
+    'search_user' => 'Rechercher par nom',
+    'add_user' => 'Ajouter',
+    'is_admin' => 'Attribuer le rôle administrateur',
+    'delete_user' => "Supprimer l'utilisateur",
+    'delete_user_warning' => 'Ceci effacera toutes les données de cet·te utilisateur·trice.',
+    'user_name' => "Nom d'utilisateur·trice",
+    'user_email' => "Email de l'utilisateur·trice",
+
+    // Login, registration, welcome pages
+    'hero_title' => 'Timer pour freelances, simple et performant',
+    'hero_intro' => 'Clockobot permet aux freelances de suivre le temps par rapport à leurs estimations, de créer des entrées de temps facturables et non facturables, et de générer des rapports personnalisés. ',
+    'new_user' => 'Nouvel utilisateur'
+
+];
