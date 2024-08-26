@@ -10,8 +10,8 @@
 
 - Get valuable insights
 - Generate tailored reports
-- Multiple languages
-- Team spirit
+- Multiple languages (de, en, es, fr)
+- Team spirit: add as many users you want
 - API ready (WIP)
 - Darkmode available
 
@@ -34,12 +34,13 @@ Clockobot is built on top of Laravel, using the TALL stack. In order to install 
 
 ### Project setup
 
-1. Clone the project: `git clone ....`
+1. Clone the project: `git clone https://github.com/clockobot/clockobot.git`
 2. Install composer dependencies: `composer install`
 3. Install npm dependencies: `composer install`
 4. Copy .env.example to .env and amend its values accordingly.
 5. Run `php artisan migrate` or if you want some dummy data run `php artisan migrate --seed`
 6. Run `php artisan storage:link`
+7. Run the app using `php artisan serve` or any other tool (we use [Herd](https://herd.laravel.com/))
 
 ### Mail setup
 
