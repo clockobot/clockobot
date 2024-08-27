@@ -1,6 +1,20 @@
 <?php
 
 return [
+    // Login / Register
+    'password' => 'Password',
+    'remember_me' => 'Remember me',
+    'forgotten_password' => 'Forgot your password?',
+    'login' => 'Login',
+    'confirm_password' => 'Confirm Password',
+    'confirm' => 'Confirm',
+    'create_account' => 'Create an Account',
+    'reset_password' => 'Reset Password',
+    'verification_message' => 'Before proceeding, please check your email for a verification link. If you did not receive the email, we will gladly send you another.',
+    'new_verification_message' => 'A new verification link has been sent to the email address you provided.',
+    'resend_verification' => 'Resend Verification Email',
+    'send_link' => 'Send Verification Email Again',
+
     // Nav
     'theme_light' => 'Light',
     'theme_dark' => 'Dark',
@@ -14,6 +28,7 @@ return [
     'users' => 'Users',
     'logout' => 'Log out',
     'show' => 'Show',
+    'filters' => 'Filters',
     'hide' => 'Hide',
 
     // Interface

@@ -1,6 +1,20 @@
 <?php
 
 return [
+    // Login / Register
+    'password' => 'Passwort',
+    'remember_me' => 'Angemeldet bleiben',
+    'forgotten_password' => 'Passwort vergessen?',
+    'login' => 'Anmelden',
+    'confirm_password' => 'Passwort bestätigen',
+    'confirm' => 'Bestätigen',
+    'create_account' => 'Konto erstellen',
+    'reset_password' => 'Passwort zurücksetzen',
+    'verification_message' => 'Bevor Sie fortfahren, überprüfen Sie bitte Ihre E-Mails auf einen Bestätigungslink. Wenn Sie die E-Mail nicht erhalten haben, senden wir Ihnen gerne eine neue.',
+    'new_verification_message' => 'Ein neuer Bestätigungslink wurde an die von Ihnen angegebene E-Mail-Adresse gesendet.',
+    'resend_verification' => 'Bestätigungs-E-Mail erneut senden',
+    'send_link' => 'Bestätigungs-E-Mail erneut senden',
+
     // Nav
     'theme_light' => 'Light',
     'theme_dark' => 'Dark',
@@ -14,6 +28,7 @@ return [
     'users' => 'Benutzer',
     'logout' => 'Abmelden',
     'show' => 'Anzeigen',
+    'filters' => 'Filter',
     'hide' => 'Verbergen',
 
     // Interface
