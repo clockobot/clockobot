@@ -40,8 +40,8 @@
                         </template>
                         <template x-if="type == 'warning'">
                             <i class="rounded-full border-2 border-white shrink-0 h-6 w-6 flex items-center justify-center">
-                                <svg class="shrink-0 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01M12 12h.01M4.293 6.707a1 1 0 010-1.414L5.414 4.586a1 1 0 011.414 0L12 10.172l5.172-5.172a1 1 0 011.414 0l1.121 1.121a1 1 0 010 1.414L12 16.828l-7.707-7.707z" />
+                                <svg class="shrink-0 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14" />
                                 </svg>
                             </i>
                         </template>
