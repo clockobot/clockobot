@@ -1,6 +1,20 @@
 <?php
 
 return [
+    // Login / Register
+    'password' => 'Contraseña',
+    'remember_me' => 'Recuérdame',
+    'forgotten_password' => '¿Olvidaste tu contraseña?',
+    'login' => 'Iniciar sesión',
+    'confirm_password' => 'Confirmar contraseña',
+    'confirm' => 'Confirmar',
+    'create_account' => 'Crear una cuenta',
+    'reset_password' => 'Restablecer la contraseña',
+    'verification_message' => 'Antes de continuar, verifica tu correo electrónico para obtener un enlace de verificación. Si no recibiste el correo electrónico, con gusto te enviaremos otro.',
+    'new_verification_message' => 'Se ha enviado un nuevo enlace de verificación al correo electrónico que proporcionaste.',
+    'resend_verification' => 'Reenviar correo de verificación',
+    'send_link' => 'Enviar nuevamente el correo de verificación',
+
     // Nav
     'theme_light' => 'Claro',
     'theme_dark' => 'Oscuro',

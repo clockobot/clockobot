@@ -1,6 +1,20 @@
 <?php
 
 return [
+    // Login / Register
+    'password' => 'Mot de passe',
+    'remember_me' => 'Se souvenir de moi',
+    'forgotten_password' => 'Mot de passe oublié ?',
+    'login' => 'Login',
+    'confirm_password' => 'Confirmer le mot de passe',
+    'confirm' => 'Confirmer',
+    'create_account' => 'Créer un compte',
+    'reset_password' => 'Réinitialiser le mot de passe',
+    'verification_message' => "Avant de commencer, veuillez vérifier votre adresse électronique en cliquant sur le lien que nous venons de vous envoyer. Si vous n'avez pas reçu l'e-mail, nous vous en enverrons un autre avec plaisir.",
+    'new_verification_message' => "Un nouveau lien de vérification a été envoyé à l'email que vous avez fourni.",
+    'resend_verification' => "Renvoyer l'email de vérification",
+    'send_link' => "Renvoyer l'email de vérification",
+
     // Nav
     'theme_light' => 'Interface claire',
     'theme_dark' => 'Interface sombre',
