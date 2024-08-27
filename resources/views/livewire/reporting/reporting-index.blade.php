@@ -4,7 +4,7 @@
             <div>
                 <h2 x-on:click="active = !active">
                     <div :aria-expanded="active" class="flex w-full items-center justify-between px-6 py-4 text-xl font-bold text-day-7 dark:text-night-1 cursor-pointer">
-                        <span>Filtres</span>
+                        <span>{{ __('timer.filters') }}</span>
                         <span x-show="active" aria-hidden="true" class="ml-4 text-2xl flex items-center space-x-2">
                             <span class="text-sm">{{ __('timer.hide') }}</span>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-6 w-6">

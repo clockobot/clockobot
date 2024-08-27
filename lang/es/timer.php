@@ -14,6 +14,7 @@ return [
     'users' => 'Usuarios',
     'logout' => 'Cerrar sesión',
     'show' => 'Mostrar',
+    'filters' => 'Filtros',
     'hide' => 'Ocultar',
 
     // Interface
