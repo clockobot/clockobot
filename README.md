@@ -73,16 +73,7 @@ Once you're connected to the admin, create a new user using your email and **mak
 
 ### Disable registration
 User registration hasn't been removed by default but as the app allows you to add users, you might want to disable registration depending on how you want it to be setup.
-In order to do so, please follow these steps:
-
-Comment/delete these lines in `routes/auth.php`:
-
-```
-Route::get('register', [RegisteredUserController::class, 'create'])
-    ->name('register');
-
-Route::post('register', [RegisteredUserController::class, 'store']);
-```
+In order to do so, simply amend the value of `APP_ALLOW_REGISTER` in the .env file (true/false).
 
 ### Api Ready (WIP)
 
