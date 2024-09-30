@@ -12,7 +12,7 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
-    if (env('APP_ALLOW_REGISTER', true)) {
+    if (config('app.allow_registration')) {
         Route::get('register', [RegisteredUserController::class, 'create'])
             ->name('register');
 
