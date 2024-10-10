@@ -64,4 +64,14 @@ class Project extends Model
         // Assuming hours_consumption() is a method that calculates the value
         return $this->hours_consumption();
     }
+
+    public function scopeFilterSearch($query){
+        return $query->when(request()->get('query'), function ($q){
+            $q->where('title', 'like', '%'.request()->get('query').'%')
+                ->orWhere('description', 'like', '%'.request()->get('query').'%')
+                ->orWhereHas('client', function ($qrClient) {
+                    $qrClient->where('name', 'like', '%'.request()->get('query').'%');
+                });
+        });
+    }
 }

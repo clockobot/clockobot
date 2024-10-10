@@ -94,16 +94,7 @@ class ProjectController extends Controller
      */
     public function search_project(): \Illuminate\Http\JsonResponse
     {
-        $query = request()->input('query');
-
-        $projects = Project::when($query, function ($q) use ($query) {
-            $q->where('title', 'like', '%'.$query.'%')
-                ->orWhere('description', 'like', '%'.$query.'%')
-                ->orWhereHas('client', function ($query) {
-                    $query->where('name', 'like', '%'.request('query').'%');
-                });
-        })->orderBy('title', 'asc')->get();
-
+        $projects = Project::query()->filterSearch()->orderBy('title', 'asc')->get();
         return response()->json(['success' => $projects], $this->httpStatusOk);
     }
 
@@ -114,7 +105,7 @@ class ProjectController extends Controller
     {
         return Validator::make($request->all(), [
             'title' => 'required|string|max:120',
-            'client_id' => 'required|integer',
+            'client_id' => 'required|exists:clients,id',
             'description' => 'nullable|string',
             'deadline' => 'nullable|date',
             'hour_estimate' => 'nullable|numeric',
