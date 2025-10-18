@@ -21,13 +21,17 @@ class ProjectsIndex extends Component
     public function projects()
     {
         if (! empty($this->query)) {
-            return Project::where('title', 'like', '%'.$this->query.'%')
+            return Project::with('client')
+                ->where('title', 'like', '%'.$this->query.'%')
                 ->orWhereHas('client', function ($query) {
                     $query->where('name', 'like', '%'.$this->query.'%');
                 })
-                ->orderBy('title', 'asc')->paginate(15);
+                ->orderBy('title', 'asc')
+                ->paginate(15);
         } else {
-            return Project::orderBy('title', 'asc')->paginate(15);
+            return Project::with('client')
+                ->orderBy('title', 'asc')
+                ->paginate(15);
         }
     }
 

@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Dashboard;
 
-use App\Models\TimeEntry;
+use App\Services\TimeEntryService;
 use Livewire\Component;
 
 class HoursCount extends Component
@@ -11,22 +11,13 @@ class HoursCount extends Component
         'refreshHoursCountOnDashboard' => '$refresh',
     ];
 
-    private function getTimeEntriesCount($startDate, $endDate): mixed
-    {
-        return TimeEntry::whereBetween('start', [$startDate, $endDate])
-            ->whereNotNull('end')
-            ->get()
-            ->sum(function ($timeEntry) {
-                return $timeEntry->calculateDurationInDecimal();
-            });
-
-    }
-
     public function render()
     {
-        $monthlyCount = $this->getTimeEntriesCount(now()->subMonth(), now());
-        $weeklyCount = $this->getTimeEntriesCount(now()->subWeek(), now());
-        $dailyCount = $this->getTimeEntriesCount(now()->startOfDay(), now());
+        $service = new TimeEntryService();
+
+        $monthlyCount = $service->getTotalHours(now()->subMonth(), now());
+        $weeklyCount = $service->getTotalHours(now()->subWeek(), now());
+        $dailyCount = $service->getTotalHours(now()->startOfDay(), now());
 
         return view('livewire.dashboard.hours-count', [
             'monthly_count' => $monthlyCount,

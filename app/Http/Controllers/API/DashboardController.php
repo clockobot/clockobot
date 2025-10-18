@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Models\TimeEntry;
+use App\Services\TimeEntryService;
 use Illuminate\Support\Facades\DB;
 
 class DashboardController extends Controller
@@ -12,13 +13,13 @@ class DashboardController extends Controller
 
     protected const LATEST_ACTIVITIES_LIMIT = 5;
 
-    protected $currentDate;
-
     public function get_hours_counts(): \Illuminate\Http\JsonResponse
     {
-        $monthly_count = $this->getTimeEntriesCount(now()->subMonth(), now());
-        $weekly_count = $this->getTimeEntriesCount(now()->subWeek(), now());
-        $daily_count = $this->getTimeEntriesCount(now()->startOfDay(), now());
+        $service = new TimeEntryService();
+
+        $monthly_count = $service->getTotalHours(now()->subMonth(), now());
+        $weekly_count = $service->getTotalHours(now()->subWeek(), now());
+        $daily_count = $service->getTotalHours(now()->startOfDay(), now());
 
         $data = [
             'monthly_count' => $monthly_count,
@@ -47,21 +48,12 @@ class DashboardController extends Controller
 
     public function get_latest_activities(): \Illuminate\Http\JsonResponse
     {
-        $latest_activities = TimeEntry::orderBy('id', 'desc')
+        $latest_activities = TimeEntry::with(['client', 'project', 'work_type', 'user'])
             ->whereNotNull('end')
+            ->latest('id')
             ->take(self::LATEST_ACTIVITIES_LIMIT)
             ->get();
 
         return response()->json(['success' => $latest_activities], $this->httpStatusOk);
-    }
-
-    private function getTimeEntriesCount($startDate, $endDate): mixed
-    {
-        return TimeEntry::whereBetween('start', [$startDate, $endDate])
-            ->whereNotNull('end')
-            ->get()
-            ->sum(function ($timeEntry) {
-                return $timeEntry->calculateDurationInDecimal();
-            });
     }
 }

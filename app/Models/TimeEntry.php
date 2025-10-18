@@ -23,8 +23,6 @@ class TimeEntry extends Model
         'billable',
     ];
 
-    protected $with = ['client', 'project', 'work_type', 'user'];
-
     protected $appends = ['hourly_duration'];
 
     protected function casts(): array

@@ -14,7 +14,8 @@ class TimeEntryController extends Controller
      */
     public function list(): \Illuminate\Http\JsonResponse
     {
-        $time_entries = TimeEntry::whereNotNull(['client_id', 'project_id', 'work_type_id', 'end'])
+        $time_entries = TimeEntry::with(['client', 'project', 'work_type', 'user'])
+            ->whereNotNull(['client_id', 'project_id', 'work_type_id', 'end'])
             ->orderBy('created_at', 'desc')
             ->get()
             ->each(function ($time_entry) {

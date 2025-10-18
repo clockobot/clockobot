@@ -14,7 +14,7 @@ class ProjectController extends Controller
      */
     public function list(): \Illuminate\Http\JsonResponse
     {
-        $projects = Project::orderBy('title', 'asc')->get();
+        $projects = Project::with('client')->orderBy('title', 'asc')->get();
 
         return response()->json(['success' => $projects], $this->httpStatusOk);
     }
@@ -40,7 +40,7 @@ class ProjectController extends Controller
      */
     public function get_project($id): \Illuminate\Http\JsonResponse
     {
-        $project = Project::find($id);
+        $project = Project::with('client')->find($id);
 
         if (! $project) {
             return response()->json(['error' => 'Project not found'], 404);
@@ -96,13 +96,16 @@ class ProjectController extends Controller
     {
         $query = request()->input('query');
 
-        $projects = Project::when($query, function ($q) use ($query) {
-            $q->where('title', 'like', '%'.$query.'%')
-                ->orWhere('description', 'like', '%'.$query.'%')
-                ->orWhereHas('client', function ($query) {
-                    $query->where('name', 'like', '%'.request('query').'%');
-                });
-        })->orderBy('title', 'asc')->get();
+        $projects = Project::with('client')
+            ->when($query, function ($q) use ($query) {
+                $q->where('title', 'like', '%'.$query.'%')
+                    ->orWhere('description', 'like', '%'.$query.'%')
+                    ->orWhereHas('client', function ($query) {
+                        $query->where('name', 'like', '%'.request('query').'%');
+                    });
+            })
+            ->orderBy('title', 'asc')
+            ->get();
 
         return response()->json(['success' => $projects], $this->httpStatusOk);
     }
