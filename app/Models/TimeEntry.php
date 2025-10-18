@@ -5,7 +5,7 @@ namespace App\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class TimeEntry extends Model
 {
@@ -35,38 +35,33 @@ class TimeEntry extends Model
         ];
     }
 
-    public function client(): HasOne
+    public function client(): BelongsTo
     {
-        return $this->hasOne(Client::class, 'id', 'client_id');
+        return $this->belongsTo(Client::class);
     }
 
-    public function project(): HasOne
+    public function project(): BelongsTo
     {
-        return $this->hasOne(Project::class, 'id', 'project_id');
+        return $this->belongsTo(Project::class);
     }
 
-    public function work_type(): HasOne
+    public function work_type(): BelongsTo
     {
-        return $this->hasOne(WorkType::class, 'id', 'work_type_id');
+        return $this->belongsTo(WorkType::class);
     }
 
-    public function user(): HasOne
+    public function user(): BelongsTo
     {
-        return $this->hasOne(User::class, 'id', 'user_id');
+        return $this->belongsTo(User::class);
     }
 
     public function calculateDurationInDecimal(): float|int
     {
-        // Parse the date strings into Carbon objects
-        $start = Carbon::createFromFormat('Y-m-d H:i', $this->start->format('Y-m-d H:i'));
-        $end = Carbon::createFromFormat('Y-m-d H:i', $this->end->format('Y-m-d H:i'));
-
-        $minutes = $start->diffAsCarbonInterval($end)->totalMinutes;
+        // start and end are already Carbon instances from casts
+        $minutes = $this->start->diffInMinutes($this->end);
 
         // Convert minutes to decimal format (e.g., 2 hours and 30 minutes becomes 2.5 hours)
-        $decimalDuration = $minutes / 60;
-
-        return $decimalDuration;
+        return $minutes / 60;
     }
 
     public function getHourlyDurationAttribute(): string
@@ -76,16 +71,13 @@ class TimeEntry extends Model
 
     public function calculateDurationInHours(): string
     {
-        $start = Carbon::parse($this->start);
-        $end = Carbon::parse($this->end);
-
-        $minutes = $start->diffAsCarbonInterval($end)->totalMinutes;
+        // start and end are already Carbon instances from casts
+        $minutes = $this->start->diffInMinutes($this->end);
 
         // Convert minutes to hours and minutes format (e.g., 2 hours and 30 minutes becomes "02:30")
         $hours = floor($minutes / 60);
         $remainingMinutes = $minutes % 60;
-        $formattedDuration = sprintf('%02d:%02d', $hours, $remainingMinutes);
 
-        return $formattedDuration;
+        return sprintf('%02d:%02d', $hours, $remainingMinutes);
     }
 }
