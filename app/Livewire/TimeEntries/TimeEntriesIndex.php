@@ -11,8 +11,6 @@ class TimeEntriesIndex extends Component
 {
     use WithPagination;
 
-    public string $query = '';
-
     protected $listeners = [
         'refreshTimeEntriesList' => '$refresh',
     ];

@@ -54,9 +54,8 @@ class Project extends Model
         return 0;
     }
 
-    public function getHoursConsumptionAttribute()
+    public function getHoursConsumptionAttribute(): float
     {
-        // Assuming hours_consumption() is a method that calculates the value
         return $this->hours_consumption();
     }
 }
