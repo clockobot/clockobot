@@ -17,7 +17,8 @@ class Graph extends Component
     #[Computed]
     public function time_entries()
     {
-        $entries = TimeEntry::whereBetween('start', [now()->subDays(15), now()])
+        $entries = TimeEntry::with('user')
+            ->whereBetween('start', [now()->subDays(15), now()])
             ->whereNotNull('end')
             ->orderBy('start')
             ->get();

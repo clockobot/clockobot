@@ -11,8 +11,6 @@ class TimeEntriesIndex extends Component
 {
     use WithPagination;
 
-    public string $query = '';
-
     protected $listeners = [
         'refreshTimeEntriesList' => '$refresh',
     ];
@@ -20,7 +18,10 @@ class TimeEntriesIndex extends Component
     #[Computed]
     public function time_entries()
     {
-        return TimeEntry::whereNotNull('client_id')->whereNotNull('project_id')->whereNotNull('end')->whereNotNull('work_type_id')->orderBy('created_at', 'desc')->paginate(15);
+        return TimeEntry::with(['client', 'project', 'work_type', 'user'])
+            ->whereNotNull(['client_id', 'project_id', 'end', 'work_type_id'])
+            ->latest('created_at')
+            ->paginate(15);
     }
 
     public function render()

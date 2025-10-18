@@ -4,8 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Project extends Model
 {
@@ -19,8 +19,6 @@ class Project extends Model
         'hour_estimate',
     ];
 
-    protected $with = ['client'];
-
     protected $appends = ['hours_consumption'];
 
     protected function casts(): array
@@ -30,9 +28,9 @@ class Project extends Model
         ];
     }
 
-    public function client(): hasOne
+    public function client(): BelongsTo
     {
-        return $this->hasOne(Client::class, 'id', 'client_id');
+        return $this->belongsTo(Client::class);
     }
 
     public function time_entries(): HasMany
@@ -40,28 +38,24 @@ class Project extends Model
         return $this->hasMany(TimeEntry::class, 'project_id', 'id');
     }
 
-    public function hours_consumption()
+    public function hours_consumption(): float
     {
-        $count = 0;
-        $time_entries = TimeEntry::where('project_id', $this->id)->get();
-        foreach ($time_entries as $entry) {
-            if (! is_null($entry->end)) {
-                $count += $entry->calculateDurationInDecimal();
-            }
-        }
+        $totalMinutes = $this->time_entries()
+            ->whereNotNull('end')
+            ->get()
+            ->sum(fn ($entry) => $entry->start->diffInMinutes($entry->end));
+
+        $totalHours = $totalMinutes / 60;
 
         if (! is_null($this->hour_estimate) && $this->hour_estimate != 0) {
-            $percentage = ($count / $this->hour_estimate) * 100;
-
-            return $percentage;
+            return ($totalHours / $this->hour_estimate) * 100;
         }
 
         return 0;
     }
 
-    public function getHoursConsumptionAttribute()
+    public function getHoursConsumptionAttribute(): float
     {
-        // Assuming hours_consumption() is a method that calculates the value
         return $this->hours_consumption();
     }
 }
