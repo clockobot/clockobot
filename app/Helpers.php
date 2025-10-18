@@ -2,9 +2,10 @@
 
 use App\Exports\ReportExport;
 use Maatwebsite\Excel\Facades\Excel;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 if (! function_exists('process_hours_total')) {
-    function process_hours_total($entries)
+    function process_hours_total($entries): string
     {
         $totalMinutes = 0;
 
@@ -21,7 +22,7 @@ if (! function_exists('process_hours_total')) {
 }
 
 if (! function_exists('export_time_entries')) {
-    function export_time_entries($entries)
+    function export_time_entries($entries): BinaryFileResponse
     {
         return Excel::download(new ReportExport($entries), 'report.xlsx');
     }

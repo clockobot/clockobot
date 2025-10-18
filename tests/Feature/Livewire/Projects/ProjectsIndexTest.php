@@ -28,7 +28,7 @@ class ProjectsIndexTest extends TestCase
         Livewire::test(ProjectsIndex::class)
             ->assertHasNoErrors()
             ->assertSet('query', '')
-            ->assertSet('projects', Project::orderBy('title', 'asc')->paginate(15));
+            ->assertSet('projects', Project::with('client')->orderBy('title', 'asc')->paginate(15));
     }
 
     #[Group('projects')]
