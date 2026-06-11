@@ -26,3 +26,7 @@ yarn-error.log
 /database/.DS_Store
 /public/.DS_Store
 /resources/.DS_Store
+
+STYLING_DOCUMENTATION_INDEX.md
+STYLING_GUIDE.md
+STYLING_QUICK_REFERENCE.txt
