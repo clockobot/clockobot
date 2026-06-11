@@ -8,13 +8,14 @@
     ],
     "license": "MIT",
     "require": {
-        "php": "^8.2",
-        "filament/notifications": "^3.2",
-        "laravel/framework": "^11.21",
+        "php": "^8.3",
+        "filament/notifications": "^3.3.52",
+        "laravel/framework": "^11.46.2",
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.9",
         "livewire/livewire": "^3.6.4",
-        "maatwebsite/excel": "^3.1",
+        "maatwebsite/excel": "^3.1.69",
+        "phpoffice/phpspreadsheet": "^1.30.5",
         "wire-elements/modal": "^2.0"
     },
     "require-dev": {
@@ -24,7 +25,7 @@
         "laravel/sail": "^1.26",
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.0",
-        "phpunit/phpunit": "^11.0.1"
+        "phpunit/phpunit": "^11.5.50"
     },
     "autoload": {
         "files": [
@@ -69,6 +70,12 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true,
             "php-http/discovery": true
+        },
+        "audit": {
+            "ignore": {
+                "PKSA-mdq4-51ck-6kdq": "Laravel CRLF in default email rule (CVE-2026-48019) affects all Laravel 11.x; no patch backported. Not in Dependabot alert list.",
+                "PKSA-zwc5-qtrz-zm1n": "illuminate/mail advisory affects all Laravel 11.x up to 11.51.0; we are pinned to 11.46 line."
+            }
         }
     },
     "minimum-stability": "stable",
